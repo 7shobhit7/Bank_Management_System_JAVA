@@ -79,12 +79,12 @@ public class SignUpOne {
         Name=new JLabel("NAME :");
         Name.setFont(new Font("Osward",Font.BOLD,20));
         Name.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,Name,180,150);
+        myCustom2(frame,Name,120,150);
         frame.add(Name);
         //NAME INPUT
         Name_Input=new JTextField();
         myCustom2_Input(frame,Name_Input,145,250,30);
-        Name_Input.setBorder(BorderFactory.createLineBorder(Name_Input,3));
+        Name_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(Name_Input);
        
         
@@ -94,12 +94,12 @@ public class SignUpOne {
         FName=new JLabel("FATHER's NAME :");
         FName.setFont(new Font("Osward",Font.BOLD,20));
         FName.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,FName,180,210);
+        myCustom2(frame,FName,170,210);
          frame.add(FName);
          //FATHER NAME
          FName_Input=new JTextField();
         myCustom2_Input(frame,FName_Input,205,250,30);
-        addBlackBorder(FName_Input,3);
+        FName_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(FName_Input);
         
         
@@ -107,7 +107,7 @@ public class SignUpOne {
         DOB=new JLabel("DATE OF YEAR  :");
         DOB.setFont(new Font("Osward",Font.BOLD,20));
         DOB.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,DOB,180,270);
+        myCustom2(frame,DOB,170,270);
         frame.add(DOB);
         //DOB Chooser
         DOB_Chooser=new JDateChooser();
@@ -124,7 +124,7 @@ public class SignUpOne {
         Gender=new JLabel("GENDER :");
         Gender.setFont(new Font("Osward",Font.BOLD,20));
         Gender.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,Gender,180,330);
+        myCustom2(frame,Gender,135,330);
         frame.add(Gender);
         
         
@@ -159,7 +159,7 @@ public class SignUpOne {
         //EMAIL INPUT
         EAddress_Input=new JTextField();
         myCustom2_Input(frame,EAddress_Input,385,250,30);
-        addBlackBorder(EAddress_Input,3);
+        EAddress_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(EAddress_Input);
        
         
@@ -195,7 +195,7 @@ public class SignUpOne {
         //ADDRESS INPUT
         Address_Input=new JTextField();
         myCustom2_Input(frame,Address_Input,505,250,30);
-        addBlackBorder(Address_Input,3);
+        Address_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(Address_Input);
         
         
@@ -208,7 +208,7 @@ public class SignUpOne {
         //CITY ADDRESS
         CAddress_Input=new JTextField();
         myCustom2_Input(frame,CAddress_Input,565,250,30);
-        addBlackBorder(CAddress_Input,3);
+        CAddress_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(CAddress_Input);
         
         //STATE
@@ -220,7 +220,7 @@ public class SignUpOne {
         //STATE INPUT
         State_Input=new JTextField();
         myCustom2_Input(frame,State_Input,625,250,30);
-        addBlackBorder(State_Input,3);
+        State_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(State_Input);
         
         //PIN CODE
@@ -232,7 +232,7 @@ public class SignUpOne {
         //PinINput
         Pin_Input=new JTextField();
         myCustom2_Input(frame,Pin_Input,685,250,30);
-        addBlackBorder(Pin_Input,3);
+        Pin_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(Pin_Input);
     }
     
