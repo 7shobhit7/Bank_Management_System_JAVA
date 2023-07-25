@@ -1,9 +1,12 @@
 package bank.management.system;
 
 
+import static bank.management.system.Login.addClearButtonFunctionality;
 import static bank.management.system.Login.enforceMinimumFrameSize;
 import static bank.management.system.Login.myCustom;
 import static bank.management.system.Login.myCustom2;
+import static bank.management.system.Login.myCustom4;
+import static bank.management.system.Login.myCustom7;
 
 
 import java.awt.Color;
@@ -19,21 +22,26 @@ import javax.swing.JFrame;
 import javax.swing.*;
 
 import javax.swing.SwingUtilities;
-
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.*;
 
 
 
 
 
-public class SignUpOne {
+public class SignUpOne extends  JFrame implements  ActionListener{
     
+       long rand;
+   Random randomNumber;
     JLabel formNumber,personalDetails,Name,FName,DOB,Gender,EAddress,MStatus,Address,City,State,Pin;
     JTextField  EAddress_Input,Name_Input,FName_Input,Address_Input,CAddress_Input,State_Input,Pin_Input;
     JDateChooser DOB_Chooser;
     JRadioButton Male,Female,Married,UnMarried,Other;
     ButtonGroup buttonGroup,M_status;
-    SignUpOne()
+    JButton Clear_Button,Next_button;
+    
+    
+    
     {
         
         
@@ -57,8 +65,8 @@ public class SignUpOne {
         
         
         //HEADING APPLICATION FORM
-        Random randomNumber=new Random();
-        long rand=Math.abs((randomNumber.nextLong()%9000L)+1000L);
+        randomNumber=new Random();
+        rand=Math.abs((randomNumber.nextLong()%9000L)+1000L);
         formNumber=new JLabel("APPLICATION FORM : "+rand);
         formNumber.setFont(new Font("Osward",Font.BOLD,40));
         formNumber.setForeground(new Color(250, 249, 246));//24,30,33
@@ -81,10 +89,12 @@ public class SignUpOne {
         Name.setForeground(new Color(250, 249, 246));//24,30,33
         myCustom2(frame,Name,120,150);
         frame.add(Name);
+        
         //NAME INPUT
         Name_Input=new JTextField();
         myCustom2_Input(frame,Name_Input,145,250,30);
         Name_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+        Name_Input.addActionListener(this);
         frame.add(Name_Input);
        
         
@@ -111,7 +121,7 @@ public class SignUpOne {
         frame.add(DOB);
         //DOB Chooser
         DOB_Chooser=new JDateChooser();
-        myCustom3_DOB(frame,DOB_Chooser,265,250,30);
+        myCustom3_DOB(frame,DOB_Chooser,265,251,30);
         frame.setForeground(new Color(105,105,105));
         DOB_Chooser.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         frame.add(DOB_Chooser);
@@ -154,7 +164,7 @@ public class SignUpOne {
         EAddress=new JLabel("EMAIL ADDRESS :");
         EAddress.setFont(new Font("Osward",Font.BOLD,20));
         EAddress.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,EAddress,180,390);
+        myCustom2(frame,EAddress,175,390);
         frame.add(EAddress);
         //EMAIL INPUT
         EAddress_Input=new JTextField();
@@ -171,7 +181,7 @@ public class SignUpOne {
         myCustom2(frame,MStatus,180,450);
         frame.add(MStatus);
         //RardioButton for M_status
-        Married =new JRadioButton();
+        Married =new JRadioButton("MARRIED");
         myCustom4_Radio(frame,Married,455,20,20,30);
         frame.add(Married);
         UnMarried =new JRadioButton();
@@ -190,7 +200,7 @@ public class SignUpOne {
         Address=new JLabel("ADDRESS :");
         Address.setFont(new Font("Osward",Font.BOLD,20));
         Address.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,Address,180,510);
+        myCustom2(frame,Address,140,510);
         frame.add(Address);
         //ADDRESS INPUT
         Address_Input=new JTextField();
@@ -203,7 +213,7 @@ public class SignUpOne {
         City=new JLabel("CITY :");
         City.setFont(new Font("Osward",Font.BOLD,20));
         City.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,City,180,570);
+        myCustom2(frame,City,120,570);
         frame.add(City);
         //CITY ADDRESS
         CAddress_Input=new JTextField();
@@ -215,7 +225,7 @@ public class SignUpOne {
         State=new JLabel("STATE :");
         State.setFont(new Font("Osward",Font.BOLD,20));
         State.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,State,180,630);
+        myCustom2(frame,State,120,630);
         frame.add(State);
         //STATE INPUT
         State_Input=new JTextField();
@@ -227,14 +237,30 @@ public class SignUpOne {
         Pin=new JLabel("PIN :");
         Pin.setFont(new Font("Osward",Font.BOLD,20));
         Pin.setForeground(new Color(250, 249, 246));//24,30,33
-        myCustom2(frame,Pin,180,690);
+        myCustom2(frame,Pin,120,690);
         frame.add(Pin);
         //PinINput
         Pin_Input=new JTextField();
         myCustom2_Input(frame,Pin_Input,685,250,30);
         Pin_Input.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         frame.add(Pin_Input);
+        
+        
+        
+        // clear Button
+        Clear_Button=new JButton("RESET");
+        myCustom7(frame,Clear_Button,320,160,30,150);
+       addClearButtonFunctionality(frame,Clear_Button,2);
+        frame.add(Clear_Button);
+        
+        
+        //NEXT BUtton
+        Next_button=new JButton("NEXT");
+        myCustom4(frame,Next_button,-100,320,170,30);
+        Next_button.addActionListener(this);
+        frame.add(Next_button);
     }
+
     
     
     
@@ -293,23 +319,106 @@ public static void myCustom4_Radio(JFrame frame, JRadioButton radioButton, int C
         }
     });
 }
-
-
-
-
-
-
-//Custom Border for InputText
-
-
  
 
 
 
-     
+
+//ActionListner
+    @Override
+    public void actionPerformed(ActionEvent ae)
+    {
     
+//    Label formNumber,personalDetails,Name,FName,DOB,Gender,EAddress,MStatus,Address,City,State,Pin;
+//    JTextField  EAddress_Input,Name_Input,FName_Input,Address_Input,CAddress_Input,State_Input,Pin_Input;
+//    JDateChooser DOB_Chooser;
+//    JRadioButton Male,Female,Married,UnMarried,Other;
+//    ButtonGroup buttonGroup,M_status;
+//    JButton Clear_Button,Next_button;
+    
+    
+    String formNumber="" + rand;
+    String PNAME=Name_Input.getText();
+    String FNAME=FName_Input.getText();
+    String SDOB = ((JTextField) DOB_Chooser.getDateEditor().getUiComponent()).getText();
+    String GENDER=null;
+    if(Male.isSelected()) GENDER="MALE";
+    else if(Female.isSelected()) GENDER="FEMALE";
+    
+    String EMAIL= EAddress_Input.getText();
+    String MARITAL=null;
+    if(Married.isSelected()) MARITAL="MARRIED";
+    else if(UnMarried.isSelected()) MARITAL="UNMARRIED";
+    else MARITAL="OTHER";
+    
+    String ADDRESS=Address_Input.getText();
+    String CITY_ADDRESS=CAddress_Input.getText();
+    String STATE=State_Input.getText();
+    String PIN=Pin_Input.getText();
+    
+    
+    
+    
+    try{
+        if(PNAME.equals("")){
+                    JOptionPane.showMessageDialog(null,"NAME IS REQUIRED");
+                }
+        else if(FNAME.equals("")){
+            JOptionPane.showMessageDialog(null, "FATHER's NAME IS REQUIRED");
+        }else if(SDOB.equals("")){
+            JOptionPane.showMessageDialog(null, "DATE OF BIRTH IS REQUIRED");
+        }else if(GENDER.equals("")){
+            JOptionPane.showMessageDialog(null, "PLEASE SELSCT GENDER");
+        }else if(EMAIL.equals("")){
+            JOptionPane.showMessageDialog(null, "EMAIL REQUIRED");
+        }else if(ADDRESS.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "PLEASE TYPE YOUR ADDRESS");
+        }
+        else if(CITY_ADDRESS.equals("")){
+            JOptionPane.showMessageDialog(null, "PLEASE TYPE YOUR CITY");
+        }else if(STATE.equals("")){
+            JOptionPane.showMessageDialog(null, "PLEASE TYPE YOUR STATE");
+        }else if(PIN.equals("")){
+            JOptionPane.showMessageDialog(null, "MAKE A PIN");
+        }
+        else{
+            Conn c=new Conn();
+            int confirmation = JOptionPane.showConfirmDialog(null, "ARE YOU SURE YOU WANT TO SUBMIT?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if(confirmation==JOptionPane.YES_OPTION)
+            {
+                    String query="insert into SignOneUp values(' "+formNumber+"','"+PNAME+"','"+FNAME+"','"+SDOB+"','"+GENDER+"','"+EMAIL+"','"+ADDRESS+"','"+CITY_ADDRESS+"','"+STATE+"','"+PIN+"')";
+                    c.s.executeUpdate(query);
+            }
+        }
+    }catch (Exception e){
+        System.out.print(e);
+    }
+    
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
     public static void main(String args[])
     {
         SwingUtilities.invokeLater(SignUpOne::new);
     }
+
+
+
+
+
+
+
+
 }

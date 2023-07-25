@@ -19,12 +19,13 @@ public class Login extends JFrame implements ActionListener
     
     
     //GLOBAL VARIABLES
+    JFrame frame;
     JButton login,clear,signUp,reset;
     JTextField cardInput;
     JPasswordField pinInput;
     public Login() 
     {
-        JFrame frame = new JFrame("SUPER ANY TIME MACINE");
+        frame = new JFrame("SUPER ANY TIME MACINE");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //This will make this image as background 
@@ -77,7 +78,7 @@ public class Login extends JFrame implements ActionListener
         
         //Login Button
          login=new JButton("LOGIN");
-        myCustom4(frame,login);
+        myCustom4(frame,login,150, 20 ,150, 30);
          login.addActionListener(this);
         frame.add(login);
         
@@ -95,8 +96,8 @@ public class Login extends JFrame implements ActionListener
         
         //RESET Button
         reset=new JButton("RESET");
-        myCustom7(frame,reset);
-        addClearButtonFunctionality(frame,reset);
+        myCustom7(frame,reset,50,150,30,0);
+        addClearButtonFunctionality(frame,reset,1);
         frame.add(reset);
         
         
@@ -196,7 +197,7 @@ public class Login extends JFrame implements ActionListener
     
     
     //LOGIN BUTTON Custom
-    public static void myCustom4(JFrame frame, JButton login) 
+    public static void myCustom4(JFrame frame, JButton login,int X,int Y,int Z,int Height) 
     {
     frame.addComponentListener(new ComponentAdapter() {
         @Override
@@ -209,8 +210,8 @@ public class Login extends JFrame implements ActionListener
             int y = (frameHeight - buttonHeight) / 2;
             int xOffset = 0; // Specify the desired horizontal offset from the center
             int yOffset = 10; // Specify the desired vertical offset from the center
-            login.setBounds(x + xOffset-150, y + yOffset+20,150,30);
-            login.setBorder(BorderFactory.createLineBorder(new Color(139, 0, 0), 2));
+            login.setBounds(x + xOffset-X, y + yOffset+Y,Z,Height);//150 20 150 30
+            login.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         }
     });
 }
@@ -227,8 +228,8 @@ public class Login extends JFrame implements ActionListener
             int y = (frameHeight - buttonHeight) / 2;
             int xOffset = 0; // Specify the desired horizontal offset from the center
             int yOffset = 10; // Specify the desired vertical offset from the center
-            clear.setBounds(x + xOffset+150, y + yOffset+20,150,30);
-            clear.setBorder(BorderFactory.createLineBorder(new Color(139, 0, 0), 2));
+            clear.setBounds(x + xOffset+150, y + yOffset+20,150,30);//-150 20 150 30
+            clear.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 2));
         }
     });
 }
@@ -252,7 +253,7 @@ public class Login extends JFrame implements ActionListener
     });
 }
       //RESET BUTTON custom
-       public static void myCustom7(JFrame frame, JButton reset)
+       public static void myCustom7(JFrame frame, JButton reset,int X,int Y, int Z,int side)
        {
     frame.addComponentListener(new ComponentAdapter() {
         @Override
@@ -265,7 +266,7 @@ public class Login extends JFrame implements ActionListener
             int y = (frameHeight - buttonHeight) / 2;
             int xOffset = 0; // Specify the desired horizontal offset from the center
             int yOffset = 10; // Specify the desired vertical offset from the center
-            reset.setBounds(x + xOffset, y + yOffset+50,150,30);
+            reset.setBounds(x + xOffset-side, y + yOffset+X,Y,Z);
             reset.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 3));
         }
     });
@@ -352,13 +353,20 @@ public class Login extends JFrame implements ActionListener
     });
 }
         //Make screen refresh/reset/clear
-        public static void addClearButtonFunctionality(JFrame frame, JButton clear) 
+        public static void addClearButtonFunctionality(JFrame frame, JButton clear,int X) 
         {
     clear.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose(); // Close the current frame
-            new Login(); // Create a new instance of the Login class to open a new frame
+            if(X==1)
+            {
+                new Login();
+            }
+            else if(X==2)
+            {
+                new SignUpOne();
+            }
         }
     });
 }
@@ -420,7 +428,9 @@ public class Login extends JFrame implements ActionListener
         }
         else if(ae.getSource()==signUp)
         {
+            frame.setVisible(false);
             
+            new SignUpOne().setVisible(true);
         }
         else if(ae.getSource()==clear)
         {
