@@ -7,20 +7,15 @@ import static bank.management.system.Login.myCustom;
 import static bank.management.system.Login.myCustom2;
 import static bank.management.system.Login.myCustom4;
 import static bank.management.system.Login.myCustom7;
-
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.*;
-
 import javax.swing.SwingUtilities;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
@@ -39,21 +34,7 @@ public class SignUpOne extends  JFrame implements  ActionListener{
     JRadioButton Male,Female,Married,UnMarried,Other;
     ButtonGroup buttonGroup,M_status;
     JButton Clear_Button,Next_button;
-    
-    
-    
-    {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    {  
         JFrame frame = new JFrame("SUPER ANY TIME MACINE");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          frame.setContentPane(new Login.ImagePanel(new ImageIcon(getClass().getResource("/icons/meramann.png")).getImage()));
